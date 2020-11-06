@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: order-service
+  data:
+    mongodb:
+      host: "192.168.254.14"
+      username: "admin"
+      password: "admin"
+      database: "order-service-db"
+      authentication-database: admin
+
+server:
+  port: 9080
+  shutdown: graceful
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://log-service:8080/eureka,  http://log-service-01:8080/eureka,  http://log-service-02:8080/eureka
+
+
+logging:
+  level:
+    com.alvin: DEBUG

@@ -1,0 +1,31 @@
+syntax = "proto3";
+package com.alvin.logservice.lib.order;
+
+option java_multiple_files = true;
+option java_package = "com.alvin.logservice.lib.order";
+option java_outer_classname = "OrderLogServiceOuter";
+
+service OrderLogService {
+  rpc saveLog (OrderLogRequest) returns (OrderLogReply) {}
+}
+
+message OrderLogRequest {
+  string orderId = 1;
+  string message = 2;
+
+  int64 logAt = 3;
+
+  enum OPTypes{
+    CREATED = 0;
+    EDIT = 1;
+    TRANSFER = 2;
+    DELETE = 3;
+  }
+
+  OPTypes  opType = 4;
+
+}
+
+message OrderLogReply {
+  bool done = 1;
+}

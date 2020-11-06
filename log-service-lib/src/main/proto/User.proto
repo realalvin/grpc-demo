@@ -1,0 +1,24 @@
+syntax = "proto3";
+package com.alvin.logservice.lib.common;
+
+option java_multiple_files = true;
+option java_package = "com.alvin.logservice.lib.common";
+option java_outer_classname = "UserOuter";
+
+
+message User {
+  string id = 1;
+  string  name = 2;
+  string email = 3;
+
+  message Address {
+    string id = 1;
+    string  street1 = 2;
+    string  street2 = 3;
+    string city = 4;
+    string state = 5;
+    string zipcode = 6;
+    string country = 7;
+
+  }
+}

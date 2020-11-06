@@ -1,0 +1,32 @@
+syntax = "proto3";
+package com.alvin.logservice.lib.product;
+
+option java_multiple_files = true;
+option java_package = "com.alvin.logservice.lib.product";
+option java_outer_classname = "ProductLogServiceOuter";
+
+service ProductLogService {
+  rpc saveLog (ProductLogRequest) returns (ProductLogReply) {}
+}
+
+message ProductLogRequest {
+  string orderId = 1;
+  string message = 2;
+
+  int64 logAt = 3;
+
+  enum OPTypes{
+    CREATED = 0;
+    EDIT = 1;
+    INBOUND = 2;
+    OUTBOUND = 3;
+    DELETE = 4;
+  }
+
+  OPTypes  opType = 4;
+
+}
+
+message ProductLogReply {
+  bool done = 1;
+}
